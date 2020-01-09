@@ -1,44 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Redmind front-end code assignment
 
-## Available Scripts
+## Task Description
 
-In the project directory, you can run:
+You will be creating the UI for a minimalistic multiplayer battleships game using React and Typescript.
 
-### `yarn start`
+Clone and use this repository.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You may install and use any additional libraries you want.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Feel free to add interactions, animations, hover effects etc. but keep in mind the final outcome should look like similar to the design [Found here](https://www.figma.com/file/Ub8oaA72Q5A0lHgMxiDtmu/Redmind-Frontend-Test-Design?node-id=14%3A4).
 
-### `yarn test`
+The backend is already built using firebase and a multitude of helper functions are provided to you. These can be imported from the index file in the firebase directory.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Don't spend too much time completing the assignment but try to spend atleast 2 hours.
+It's better (and totally fine) to deliver a small part that works and looks good rather than something with bugs that looks unfinished.
 
-### `yarn build`
+If you're having any issues getting started or general questions please contact us!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Delivery
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+When you're finished make a pull request to this repository and let your contact at Redmind know.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## About Figma
 
-### `yarn eject`
+If you're new to figma, this is what you need to know for this assignment:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Click an element and select `Export` in the bottom right corner to download it a format of your choosing
+- In the side navigation (on the left) under **Layers** you can switch between the different pages — **App Design** and **Design Library**
