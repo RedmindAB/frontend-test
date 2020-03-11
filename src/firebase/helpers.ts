@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import uuidv4 from 'uuid/v4'
+import shortid from 'shortid'
 import { Board, BattleDotStatus, GameState } from './types'
 
 export class BattleDot {
@@ -7,30 +7,58 @@ export class BattleDot {
   status = BattleDotStatus.PASSIVE
 }
 
-export class _Player {
+export class Player {
   name = ''
-  board = getEmptyBoard()
+  board = getRandomizedBoard()
   id = ''
   ready = false
+  attempts = 0
 
   constructor() {
-    const id = uuidv4()
+    const existingPlayerId = localStorage.getItem('PLAYER_ID')
+    const id = existingPlayerId || shortid.generate()
+
+    if (!existingPlayerId) {
+      localStorage.setItem('PLAYER_ID', id)
+    }
+
     this.name = `Player-${id}`
     this.id = id
   }
 
   reset() {
     this.ready = false
-    this.board = getEmptyBoard()
+    this.board = getRandomizedBoard()
+    this.attempts = 0
   }
 }
 
-export const player = new _Player()
+export const player = new Player()
 // @ts-ignore
 window.player = player
 
+export function randomize(min: number, max: number) {
+  return Math.round(Math.random() * (max - min) + min)
+}
+
 export function getEmptyBoard(): Board {
-  return Array(3).fill(Array(3).fill(new BattleDot())) as Board
+  return Array(3)
+    .fill(null)
+    .map(() =>
+      Array(3)
+        .fill(null)
+        .map(() => new BattleDot())
+    ) as Board
+}
+
+export function getRandomizedBoard(): Board {
+  const board = getEmptyBoard()
+  console.log('getrandom')
+  board.forEach(row => {
+    row[randomize(0, 2)].active = true
+  })
+
+  return board
 }
 
 export function getGameState(): GameState {
@@ -53,6 +81,8 @@ export async function createGame(gameId: string) {
 }
 
 export async function startGame(gameId: string) {
+  localStorage.removeItem('GAME_ID')
+
   return firebase
     .database()
     .ref(`games/${gameId}/started`)
@@ -86,6 +116,8 @@ export async function fireAtDot(
 
       if (!otherPlayer) throw Error('Player not found')
 
+      ++player.attempts
+
       const targettedDot = otherPlayer?.board[row][column]
       const newBoard = [...otherPlayer.board]
 
@@ -116,6 +148,13 @@ export async function listenToGame(
     .database()
     .ref(`games/${gameId}`)
     .on('value', snapshot => callback(snapshot.val() as GameState))
+}
+
+export async function stopListeningToGame(gameId: string) {
+  return firebase
+    .database()
+    .ref(`games/${gameId}`)
+    .off('value')
 }
 
 export async function joinGame(gameId: string) {

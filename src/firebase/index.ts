@@ -7,11 +7,13 @@ import {
   createGame,
   endTurn,
   fireAtDot,
-  setPlayerBoard
+  setPlayerBoard,
+  stopListeningToGame
 } from './helpers'
 
 export const game = {
   start: startGame,
+  stopListening: stopListeningToGame,
   update: updateGame,
   end: endGame,
   listen: listenToGame,
@@ -21,3 +23,6 @@ export const game = {
   fireAtDot,
   setPlayerBoard
 }
+
+// @ts-ignore
+window.game = game
