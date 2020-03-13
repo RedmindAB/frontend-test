@@ -18,6 +18,7 @@ export type Player = {
   board: Board
   id: string
   ready: boolean
+  attempts: number
 }
 
 export type GameState = {
@@ -28,4 +29,9 @@ export type GameState = {
     [key: string]: Player
   }
   currentTurn: Player['id']
+}
+
+export type GameProps = {
+  gameId: string
+  player: Player
 }
