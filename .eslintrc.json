@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "react-hooks/exhaustive-deps": 0,
+    "no-restricted-globals": 0
+  }
+}

@@ -1,0 +1,26 @@
+export default {
+  color: {
+    background: '#222',
+    backgroundVariant: '#333',
+    indicator: '#ee5a46',
+    indicatorVariant: '#f5998c',
+    text: '#fff',
+    textLight: '#ffffffCC',
+    textInactive: '#ffffff66',
+    placeholder: '#c4c4c4',
+    dotDefault: '#c4c4c4',
+    dotSelected: '#f5998c',
+    dotHit: '#ee5a46',
+    dotMissed: '#575757',
+  },
+  fontSize: {
+    heading1: '32px',
+    heading3: '24px',
+    heading4: '22px',
+    label: '18px',
+    paragraph: '18px',
+    placeholder: '18px',
+    meta: '16px',
+    small: '14px',
+  },
+};
